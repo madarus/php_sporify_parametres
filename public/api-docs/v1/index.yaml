@@ -1,77 +1,65 @@
-openapi: 3.0.3
+openapi: "3.0.0"
 info:
-  title: Ensi Backend Skeleton (Replace me)
-  contact:
-    name: API Support
-    url: https://ensi.tech/contacts
-    email: mail@greensight.ru
   version: 1.0.0
-  description: Ensi Backend Skeleton Description (Replace me)
+  title: Spotify Parametres
+  license:
+    name: MIT
 servers:
-  - url: /api/v1
-tags:
-  - name: examples
-    description: Тэг-пример
+  - url: http://petstore.swagger.io/v1
 paths:
-  /examples/{id}:
+  /topsongs:
     get:
+      summary: List top tracks
+      operationId: listTopTracks
       tags:
-        - examples
-      operationId: getExample
-      x-lg-handler: 'App\Http\ApiV1\Modules\Foos\Controllers\FoosController@get'
-      x-lg-route-name: 'getExample'
-      x-lg-skip-request-generation: true
-      summary: Получение объекта типа Example
-      description: Получение объекта типа Example
+        - topTracks
       parameters:
-        - $ref: '#/components/parameters/PathId'
-        - $ref: '#/components/parameters/QueryInclude'
+        - name: user_id
+          in: query
+          description: Type user and it's top 5 tracks
+          required: false
+          schema:
+            type: integer
+            format: int32
       responses:
-        #"200":
-          #description: Успешный ответ
-          # content:
-          #  application/json:
-          #    schema:
-          #      $ref: './customers.yaml#/CustomerResponse'
-        "404":
-          $ref: '#/components/responses/NotFound'
-        "500":
-          $ref: '#/components/responses/ServerError'
+        '200':
+          description: A paged array of pets
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UsersTop5"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
-  parameters:
-    QueryInclude:
-      $ref: './common_parameters.yaml#/QueryInclude'
-    PathId:
-      $ref: './common_parameters.yaml#/PathId'
   schemas:
-    EmptyDataResponse:
+    UsersTop5:
       type: object
-      properties:
-        data:
-          type: object
-          nullable: true
-        meta:
-          type: object
       required:
-          - data
-    PaginationTypeEnum:
-      $ref: './common_schemas.yaml#/PaginationTypeEnum'
-  responses:
-    BadRequest:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: './errors.yaml#/ErrorResponse'
-    NotFound:
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: './errors.yaml#/ErrorResponse'
-    ServerError:
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: './errors.yaml#/ErrorResponse'
+        - user_id
+        - nickname
+        - top5
+      properties:
+        nickname:
+          type: string
+        top5:
+          type: string
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
