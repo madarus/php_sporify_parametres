@@ -1,5 +1,5 @@
 <?php
-namespace App\Domain\News\Models;
+namespace App\Domain\Parametres\Models;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 /**
