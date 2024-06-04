@@ -15,8 +15,6 @@ class ParametresResource extends BaseJsonResource
         return [
             'user_id' => $this->user_id,
             'top_5_tracks' => $this->top_5_tracks,
-            'user_name' => $this->user_name,
-            'token' => $this->token,
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
         ];

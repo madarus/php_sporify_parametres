@@ -19,9 +19,10 @@
         "ensi/laravel-serve-stoplight": "^0.1.4",
         "ensi/laravel-stdout-logs-helper": "^0.2.0",
         "ensi/octane-swoole-urgent-starter": "^2.0",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^10.0",
         "laravel/octane": "^2.0",
+        "laravel/socialite": "^5.14",
         "laravel/tinker": "^2.7",
         "spatie/laravel-query-builder": "^5.0"
     },

@@ -5,14 +5,17 @@ Parametres:
       type: integer
       description: ID of user
       example: 1
-    user_name:
-      type: string
-      description: Nickname of user
-      example: "Matuwa"
     top_5_tracks:
-      type: string
+      type: array
       description: User's top 5 tracks
-      example: "0UnaXB4f6g1nQmMdQlBS5h,0UnaXB4f6g2nQmMdQlBS5h,0UnaXB4f6g3nQmMdQlBS5h,0UnaXB4f6g4nQmMdQlBS5h,0UnaXB4f6g5nQmMdQlBS5h"
+      items:
+        type: string
+      example:
+        - "0UnaXB4f6g1nQmMdQlBS5h"
+        - "0UnaXB4f6g2nQmMdQlBS5h"
+        - "0UnaXB4f6g3nQmMdQlBS5h"
+        - "0UnaXB4f6g4nQmMdQlBS5h"
+        - "0UnaXB4f6g5nQmMdQlBS5h"
     updated_at:
       description: "Update date"
       format: date-time
@@ -25,7 +28,6 @@ Parametres:
       example: "2024-04-04T11:57:28.000000Z"
   required:
     - user_id
-    - user_name
     - top_5_tracks
     - updated_at
     - created_at
@@ -43,14 +45,21 @@ ParametresResponse:
 CreateParametresRequest:
   type: object
   properties:
-    user_name:
+    user_id:
       type: string
-      description: Email of user
+      description: user_id
       example: "Matuwa"
     top_5_tracks:
-      type: string
-      description: Nickname of user
-      example: "0UnaXB4f6g1nQmMdQlBS5h,0UnaXB4f6g2nQmMdQlBS5h,0UnaXB4f6g3nQmMdQlBS5h,0UnaXB4f6g4nQmMdQlBS5h,0UnaXB4f6g5nQmMdQlBS5h"
+      type: array
+      description: User's top 5 tracks
+      items:
+        type: string
+      example:
+        - "0UnaXB4f6g1nQmMdQlBS5h"
+        - "0UnaXB4f6g2nQmMdQlBS5h"
+        - "0UnaXB4f6g3nQmMdQlBS5h"
+        - "0UnaXB4f6g4nQmMdQlBS5h"
+        - "0UnaXB4f6g5nQmMdQlBS5h"
   required:
-    - user_name
+    - user_id
     - top_5_tracks
