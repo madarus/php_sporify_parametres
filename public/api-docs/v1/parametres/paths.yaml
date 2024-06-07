@@ -20,3 +20,29 @@ ParametresOne:
         $ref: '../index.yaml#/components/responses/NotFound'
       "500":
         $ref: '../index.yaml#/components/responses/ServerError'
+
+Parametres:
+  post:
+    tags:
+      - parametres
+    operationId: createParametres
+    summary: Запрос на создание parametres
+    description: Запрос на создание parametres
+    x-lg-handler: 'App\Http\ApiV1\Modules\Parametres\Controllers\ParametresController@create'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: './schemas/parametres.yaml#/CreateParametresRequest'
+    responses:
+      "201":
+        description: Выполнено успешно
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/parametres.yaml#/ParametresResponse'
+      "400":
+        $ref: '../index.yaml#/components/responses/BadRequest'
+      "500":
+        $ref: '../index.yaml#/components/responses/ServerError'

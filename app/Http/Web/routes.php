@@ -6,7 +6,7 @@ use App\Http\Web\Controllers\HealthCheck;
 use App\Http\Web\Controllers\OasController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('top5parametres', [SpotifyController::class, 'getTop5Tracks']);
+Route::get('/api/v1/parametres/spotify', [SpotifyController::class, 'getTop5Tracks']);
 
 //Route::get('send_parametres', [SendController::class, 'sendTrackData']);
 

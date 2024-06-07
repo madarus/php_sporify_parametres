@@ -4,12 +4,14 @@ info:
   version: 1.0.0
   description: Parametres service
 servers:
-  - url: /top5parametres
+  - url: /api/v1
 tags:
   - name: parametres
     description: Parametres
 paths:
-  /?user_id={id}:
+  /parametres/parametres:
+    $ref: './parametres/paths.yaml#/Parametres'
+  /parametres/parametres/{id}:
     $ref: './parametres/paths.yaml#/ParametresOne'
 components:
   parameters:
